@@ -1,0 +1,4 @@
+TODO:
+
+Allow indexing for has_many and has_one
+Add Merb rake tasks to lib/solarize/merbtasks.rb

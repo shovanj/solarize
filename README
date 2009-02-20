@@ -1,0 +1,40 @@
+solarize
+========
+
+A plugin for the Merb framework that enables Solr indexing for  DataMapper Models. It is loosely based on the
+acts_as_solr plugin(http://acts-as-solr.rubyforge.org/) for rails.
+
+Current Features:
+  i) Model indexing
+  ii) Search using get_by_solr
+
+
+Requirements:
+
+solr-ruby gem
+tomcat or jetty running an instance of solr
+
+Usage:
+
+# in config/solr.yml
+development:
+  servlet_path: app_name
+  port: 8080
+  host: localhost
+
+# in the model
+include Solarize::Resource  
+
+solarize :fields => [:id, :title, :body, :author]
+
+
+# to rebuild indexes in batch
+Model.rebuild_solr_index(batch_size)
+
+# to search 
+Model.get_by_solr('merb hacks')
+=> {:total=>2, :docs=>[[113], [112]]}
+# that will give  you a hash that contains docs array with id's amd total num found
+
+
+
